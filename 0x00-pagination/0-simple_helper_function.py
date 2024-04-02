@@ -17,6 +17,6 @@ from typing import Tuple
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """simple helper func"""
-    start_index = page * 10 if page > 1 else 0
+    start_index = (page - 1) * page_size
     end_index = page_size + start_index
     return (start_index, end_index)
