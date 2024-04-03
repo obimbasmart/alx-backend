@@ -30,4 +30,4 @@ class FIFOCache(BaseCaching):
         if len(self.fifo_keys) > self.MAX_ITEMS:
             dkey = self.fifo_keys.pop(0)
             del self.cache_data[dkey]
-            print("DISCARD", dkey)
+            print("DISCARD:", dkey)
