@@ -17,6 +17,6 @@ class BasicCache(BaseCaching):
     def put(self, key, item):
         """ Add an item in the cache
         """
-        if not (key or item):
+        if not key or not item:
             return
         self.cache_data[key] = item
