@@ -34,6 +34,6 @@ class LRUCache(BaseCaching):
             self.__lru_keys.append(key)
 
         if len(self.__lru_keys) > self.MAX_ITEMS:
-            dkey = self.lru_keys.pop(0)
+            dkey = self.__lru_keys.pop(0)
             del self.cache_data[dkey]
             print("DISCARD:", dkey)
