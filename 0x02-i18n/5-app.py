@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 
-"""Mock logging in
+"""Task 0x05 - Mock logging in
 """
 
 
@@ -33,9 +33,9 @@ def get_locale():
     """Selector function"""
     locale = request.args.get("locale")
     if not locale:
-        return babel.default_locale
+        return app.config["BABEL_DEFAULT_LOCALE"]
 
-    if locale in [_locale.language for _locale in babel.list_translations()]:
+    if locale in [lang for lang in app.config["LANGUAGES"]]:
         return locale
 
     return request.accept_languages.best_match(app.config['LANGUAGES'])
@@ -43,22 +43,16 @@ def get_locale():
 
 def get_user(login_as=None):
     """get user by ID"""
-    if not login_as:
+    if not login_as or not login_as.isdigit():
         return None
-
-    user = users.get(login_as)
-    if user:
-        return users
+    return (users.get(int(login_as)))
 
 
 @app.before_request
 def before_request():
     """---- ----- ----"""
-    user = None
     user_id = request.args.get("login_as")
-    if user_id and user_id.isdigit():
-        user = users.get(int(user_id))
-    g.user = user
+    g.user = get_user(login_as=user_id)
 
 
 @app.route("/")
