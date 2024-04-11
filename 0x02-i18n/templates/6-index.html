@@ -10,9 +10,9 @@
 
     <p>
       {% if user %} 
-          {{_('You are logged in as %(username)s.', username=user.name)}}
+          {{_('logged_in_as', username=user.name)}}
       {% else %}
-          {{_('You are not logged in.')}}
+          {{_('not_logged_in')}}
       {% endif %}
     </p>
   </body>

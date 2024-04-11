@@ -36,12 +36,3 @@ msgstr "You are logged in as %(username)s."
 msgid "not_logged_in"
 msgstr "You are not logged in."
 
-#: templates/6-index.html:13
-#, python-format
-msgid "You are logged in as %(username)s."
-msgstr "You are logged in as %(username)s."
-
-#: templates/6-index.html:15
-msgid "You are not logged in."
-msgstr "You are not logged in."
-
