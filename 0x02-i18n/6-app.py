@@ -25,24 +25,21 @@ class Config:
 
 app = Flask(__name__)
 app.config.from_object(Config)
-# babel = Babel(app)
+babel = Babel(app)
 
 
-# @babel.localeselector
+@babel.localeselector
 def get_locale():
     """locale selector"""
     supported_languages = [lang for lang in app.config["LANGUAGES"]]
     locale = request.args.get("locale")
-    if locale in [lang for lang in supported_languages]:
+    if locale in supported_languages:
         return locale
     if (g.user and g.user.get("locale") in supported_languages):
         return g.user.get("locale")
     if request.headers.get('Accept-Language'):
         return request.accept_languages.best_match(app.config['LANGUAGES'])
     return app.config["BABEL_DEFAULT_LOCALE"]
-
-
-babel = Babel(app, locale_selector=get_locale)
 
 
 def get_user(login_as=None):
@@ -62,7 +59,7 @@ def before_request():
 @app.route("/")
 def index():
     """Basic route"""
-    return render_template("5-index.html",
+    return render_template("6-index.html",
                            home_title="Welcome to Holberton",
                            home_header="Hello world", user=g.user)
 
