@@ -6,7 +6,7 @@
 
 
 from flask import Flask, render_template, request, g
-from flask_babel import Babel, format_datetime,  _
+from flask_babel import Babel, format_datetime
 import pytz
 from datetime import datetime
 
